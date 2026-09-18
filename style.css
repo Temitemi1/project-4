@@ -1,0 +1,285 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #f4f1ea;
+  color: #2e2a24;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* ---------- Top bar ---------- */
+
+#topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background-color: #2e2a24;
+  color: white;
+}
+
+#appTitle {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#saveStatus {
+  font-size: 13px;
+  color: #c9c2b3;
+  transition: color 0.2s ease;
+}
+
+#saveStatus.saving {
+  color: #f2c94c;
+}
+
+/* ---------- Layout ---------- */
+
+#mainLayout {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 200px 240px 1fr;
+  overflow: hidden;
+}
+
+aside,
+main {
+  overflow-y: auto;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  font-weight: bold;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #6b6355;
+  border-bottom: 1px solid #e2dcc9;
+}
+
+.icon-btn {
+  border: none;
+  background: none;
+  color: #a15fd6;
+  font-weight: bold;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Folder panel ---------- */
+
+#folderPanel {
+  background-color: #eee8d9;
+  border-right: 1px solid #e2dcc9;
+}
+
+.folder-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 14px;
+  border-left: 3px solid transparent;
+}
+
+.folder-item:hover {
+  background-color: #e5dfcf;
+}
+
+.folder-item.selected {
+  background-color: #ffffff;
+  border-left: 3px solid #a15fd6;
+  font-weight: bold;
+}
+
+.folder-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.folder-count {
+  font-size: 11px;
+  color: #8a8272;
+}
+
+/* ---------- Note list panel ---------- */
+
+#notePanel {
+  background-color: #f7f4eb;
+  border-right: 1px solid #e2dcc9;
+}
+
+.note-item {
+  padding: 10px 14px;
+  cursor: pointer;
+  border-bottom: 1px solid #e9e3d3;
+}
+
+.note-item:hover {
+  background-color: #eee8d9;
+}
+
+.note-item.selected {
+  background-color: #ffffff;
+  box-shadow: inset 3px 0 0 #a15fd6;
+}
+
+.note-item-title {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.note-item-snippet {
+  font-size: 12px;
+  color: #8a8272;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.empty-hint {
+  padding: 16px 14px;
+  font-size: 13px;
+  color: #a39d8c;
+}
+
+/* ---------- Editor panel ---------- */
+
+#editorPanel {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+#noEditorSelected {
+  color: #a39d8c;
+  font-size: 14px;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#titleInput {
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  border-bottom: 2px solid #e2dcc9;
+  padding: 6px 2px;
+  margin-bottom: 14px;
+  font-family: inherit;
+}
+
+#titleInput:focus {
+  outline: none;
+  border-bottom-color: #a15fd6;
+}
+
+#editorSplit {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  min-height: 0;
+}
+
+#markdownInput {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  border: 1px solid #e2dcc9;
+  border-radius: 8px;
+  padding: 14px;
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+#markdownInput:focus {
+  outline: none;
+  border-color: #a15fd6;
+}
+
+#previewPane {
+  border: 1px solid #e2dcc9;
+  border-radius: 8px;
+  padding: 14px;
+  overflow-y: auto;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+#previewPane h1,
+#previewPane h2,
+#previewPane h3 {
+  margin-top: 0;
+}
+
+#previewPane code {
+  background-color: #f4f1ea;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-family: "Consolas", "Courier New", monospace;
+}
+
+#previewPane pre {
+  background-color: #2e2a24;
+  color: #f4f1ea;
+  padding: 12px;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+#previewPane pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+#previewPane blockquote {
+  border-left: 3px solid #a15fd6;
+  margin: 10px 0;
+  padding-left: 12px;
+  color: #6b6355;
+}
+
+#deleteNoteBtn {
+  margin-top: 14px;
+  align-self: flex-start;
+  background: none;
+  border: 1px solid #d9534f;
+  color: #d9534f;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+#deleteNoteBtn:hover {
+  background-color: #d9534f;
+  color: white;
+}

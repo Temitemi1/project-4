@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>MarkNotes</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- Top bar -->
+      <header id="topbar">
+        <div id="appTitle">📝 MarkNotes</div>
+        <div id="saveStatus">All changes saved</div>
+      </header>
+
+      <div id="mainLayout">
+        <!-- Column 1: folders -->
+        <aside id="folderPanel">
+          <div class="panel-header">
+            <span>Folders</span>
+            <button class="icon-btn" onclick="handleAddFolder()">+ New</button>
+          </div>
+          <div id="folderList"></div>
+        </aside>
+
+        <!-- Column 2: notes inside the selected folder -->
+        <aside id="notePanel">
+          <div class="panel-header">
+            <span id="notePanelTitle">Notes</span>
+            <button class="icon-btn" onclick="handleAddNote()">+ New</button>
+          </div>
+          <div id="noteList"></div>
+        </aside>
+
+        <!-- Column 3: editor + live preview -->
+        <main id="editorPanel">
+          <div id="noEditorSelected">
+            <p>Select a note, or create a new one, to start writing.</p>
+          </div>
+
+          <div id="editorArea" class="hidden">
+            <input type="text" id="titleInput" placeholder="Note title" />
+
+            <div id="editorSplit">
+              <textarea
+                id="markdownInput"
+                placeholder="Write your Markdown here...
+
+# Heading
+**bold text**  *italic text*
+- list item
+[a link](https://example.com)"
+              ></textarea>
+
+              <div id="previewPane"></div>
+            </div>
+
+            <button id="deleteNoteBtn" onclick="handleDeleteNote()">
+              Delete this note
+            </button>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
